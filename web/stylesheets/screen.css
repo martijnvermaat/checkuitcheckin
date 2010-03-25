@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'AdlerRegular';
+    src: url('../fonts/adler.eot');
+    src: local('Adler'), local('Adler'), url('../fonts/adler.woff') format('woff'), url('../fonts/adler.ttf') format('truetype'), url('../fonts/adler.svg#Adler') format('svg');
+}
+
+
 html {
-    background          :   #2e3436;
+    background          :   #1C2021;
 }
 
 
 body {
-    background          :   #2e3436;
+    margin              :   0;
     color               :   #aaa;
     font-family         :   Verdana, Arial, Helvetica, sans-serif;
     font-size           :   14px;
@@ -12,81 +19,78 @@ body {
 }
 
 
-#tweets, #delicious {
-    width               :   500px;
-    margin              :   20px;
-}
-
-
-#tweets ul {
-    list-style-type     :   none;
-    margin              :   0;
+h1 {
+    margin              :   30px 0 10px 110px;
     padding             :   0;
-    color               :   #2e3436;
-}
-
-
-#tweets .awesome, #weets .epic {
-    text-transform      :   uppercase;
-}
-
-
-#tweets li {
-    overflow-y          :   auto;
-    overflow-x          :   hidden;
-    padding             :   .5em;
-    background-color    :   #aaa;
-}
-
-
-#tweets li.even {
-    background-color    :   #bbb;
-}
-
-
-#tweets li.first {
-    border-top-left-radius         :   10px;
-    border-top-right-radius        :   10px;
-   -webkit-border-top-left-radius  :   10px;
-   -webkit-border-top-right-radius :   10px;
-   -moz-border-radius-topleft      :   10px;
-   -moz-border-radius-topright     :   10px;
-}
-
-
-#tweets li.last {
-    border-bottom-left-radius         :   10px;
-    border-bottom-right-radius        :   10px;
-   -webkit-border-bottom-left-radius  :   10px;
-   -webkit-border-bottom-right-radius :   10px;
-   -moz-border-radius-bottomleft      :   10px;
-   -moz-border-radius-bottomright     :   10px;
-}
-
-
-#tweets a {
-    color               :   #b61;
-}
-
-
-#tweets .avatar {
-    padding-right       :   .5em;
-    float               :   left;
-}
-
-
-#tweets .avatar img {
-    vertical-align      :   middle;
-}
-
-
-#delicious ul {
-    list-style-type     :   none;
-    margin              :   0;
-    padding             :   0;
+    color               :   #555;
+    font                :   36px/40px 'AdlerRegular', Arial, sans-serif;
+    letter-spacing      :   0;
+    text-shadow         :   #1c2021 1px 1px 2px;
 }
 
 
 a {
     color               :   #aaa;
+    text-decoration     :   none;
+}
+
+
+#content {
+    position            :   relative;
+    width               :   100%;
+    height              :   544px;
+    margin-top          :   60px;
+    /* By illustir, http://www.flickr.com/photos/alper/3697137687/ */
+    background          :   #171917 url("../images/background.jpg") left center no-repeat;
+}
+
+
+#content .tweet {
+    position            :   absolute;
+    top                 :   65px;
+    left                :   110px;
+    width               :   460px;
+}
+
+
+#content .tweet h2, #content .tweet p {
+    margin              :   0;
+    padding             :   0;
+    margin-bottom       :   40px;
+}
+
+
+#content .tweet h2 {
+    color               :   #111;
+    font-size           :   14px;
+    font-weight         :   bold;
+}
+
+
+#content .tweet h2 span {
+    display : block;
+    color               :   #111;
+    font-size           :   14px;
+    font-weight         :   normal;
+}
+
+
+#content .tweet .text {
+    font-family         :   Georgia, serif;
+    font-size           :   24px;
+    line-height         :   32px;
+}
+
+
+#delicious ul {
+    width               :   460px;
+    list-style-type     :   none;
+    margin              :   20px 0 50px 110px;
+    padding             :   0;
+}
+
+
+#delicious li {
+    margin              :   8px 0 8px 0;
+    line-height         :   18px;
 }
