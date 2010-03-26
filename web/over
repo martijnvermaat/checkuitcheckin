@@ -8,14 +8,12 @@
   <script src="javascripts/jquery.timers.js"></script>
   <script src="javascripts/ui.js"></script>
 </head>
-<body class="index">
+<body>
 <p class="now">&nbsp;</p>
 <h1><a href="index">Check uit, check in &mdash; ov-chipkaart peil gechecked</a></h1>
 <div id="content">
-<div class="tweet">
-<h2></h2>
-<p class="text"></p>
-</div>
+<h2>Check in, check uit</h2>
+<p>Hier kan een stukje tekst komen over berichtgeving en naam.</p>
 </div>
 <div id="delicious"></div>
 <ul id="footer">

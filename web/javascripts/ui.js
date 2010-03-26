@@ -24,11 +24,7 @@
 /*
   TODO:
   Attribute background image
-  Read more link for delicious
-  JSON lib for IE
-  Only show delicious links with some tag
-  Date for delicious links
-  Test browsers
+  Test IE7
 */
 
 
@@ -38,7 +34,7 @@ $(document).ready(function() {
     var twitterSearch = 'chipkaart';
     var twitterCount = 20;
     var twitterDisplayTime = 1000 * 8;
-    var twitterFadeTime = 1000;
+    var twitterFadeTime = 800;
     /*
       There seems to be a bug, where animations are not smooth when the
       interval is specified as a string, e.g. '5s'.
@@ -149,7 +145,8 @@ $(document).ready(function() {
             pane.find('h2').empty().append(
                 $('<a>').attr('href', tweet.userUrl).text('@' + tweet.user));
             pane.find('h2').append(
-                $('<a class="date">').attr('href', tweet.url).text(tweet.date));
+                $('<a>').attr('href', tweet.url).text(tweet.date).addClass(
+                    'date'));
         }
 
         if (initialTweet)
@@ -165,59 +162,68 @@ $(document).ready(function() {
     }
 
 
+    // Setup the Twitter stream
+    function setupTwitter() {
+
+        // Get tweets, show the first one, and skip to next tweet every 5 seconds
+        updateTwitter(function() {
+
+            if (tweets.length > 0)
+                showTweet();
+
+            if (tweets.length > 1) {
+
+                $(document).everyTime(twitterDisplayTime, showNextTweet);
+
+                // We add navigation links and reset the skip timer on click
+                $('#content').append($('<ul class="nav">').append(
+                    $('<li title="vorige">&lt;</li>').click(function() {
+                        showPreviousTweet();
+                        $(document).stopTime();
+                        $(document).everyTime(twitterDisplayTime, showNextTweet);
+                    })
+                ).append(
+                    $('<li title="volgende">&gt;</li>').click(function() {
+                        showNextTweet();
+                        $(document).stopTime();
+                        $(document).everyTime(twitterDisplayTime, showNextTweet);
+                    })
+                ));
+
+            }
+
+        });
+
+
+        // Every 5 minutes, get tweets and start at the latest tweet again
+        $(document).everyTime(twitterReloadTime, updateTwitter);
+
+        // Show link to Twitter search results
+        $('#content').append($('<p class="more">').append(
+            $('<a>meer...</a>').attr('href', twitterUrl)));
+
+        // Pause auto advancing of tweets on mouse hover
+        $('#content .tweet').hover(function() {
+            $(document).stopTime();
+        }, function() {
+            if (tweets.length > 1) {
+                showNextTweet();
+                $(document).everyTime(twitterDisplayTime, showNextTweet);
+            }
+        });
+
+    }
+
+
     // Show current date
     $('.now').text(shortDate());
 
     // Show Delicious links
     updateDelicious();
 
-
-    // Get tweets, show the first one, and skip to next tweet every 5 seconds
-    updateTwitter(function() {
-
-        if (tweets.length > 0)
-            showTweet();
-
-        if (tweets.length > 1) {
-
-            $(document).everyTime(twitterDisplayTime, showNextTweet);
-
-            // We add navigation links and reset the skip timer on click
-            $('#content').append($('<ul class="nav">').append(
-                $('<li title="vorige">&lt;</li>').click(function() {
-                    showPreviousTweet();
-                    $(document).stopTime();
-                    $(document).everyTime(twitterDisplayTime, showNextTweet);
-                })
-            ).append(
-                $('<li title="volgende">&gt;</li>').click(function() {
-                    showNextTweet();
-                    $(document).stopTime();
-                    $(document).everyTime(twitterDisplayTime, showNextTweet);
-                })
-            ));
-
-        }
-
-    });
-
-
-    // Every 5 minutes, get tweets and start at the latest tweet again
-    $(document).everyTime(twitterReloadTime, updateTwitter);
-
-    // Show link to Twitter search results
-    $('#content').append($('<p class="more">').append(
-        $('<a>meer...</a>').attr('href', twitterUrl)));
-
-    // Pause auto advancing of tweets on mouse hover
-    $('#content .tweet').hover(function() {
-        $(document).stopTime();
-    }, function() {
-        if (tweets.length > 1) {
-            showNextTweet();
-            $(document).everyTime(twitterDisplayTime, showNextTweet);
-        }
-    });
+    // If this is the index page, setup the Twitter stream
+    if ($('body').hasClass('index'))
+        setupTwitter();
 
 
 });
