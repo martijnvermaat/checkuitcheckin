@@ -62,6 +62,9 @@ $(document).ready(function() {
 
         $.getJSON(twitterApiUrl, function(data) {
 
+            currentTweet = 0;
+            tweets = [];
+
             $.each((data.results || data), function(i, tweet) {
                 var user = tweet.from_user || tweet.user.screen_name;
                 tweets.push({
@@ -74,7 +77,6 @@ $(document).ready(function() {
                 });
             });
 
-            currentTweet = 0;
             if (callback) callback();
 
         });
@@ -200,7 +202,8 @@ $(document).ready(function() {
             $(document).stopTime();
         }, function() {
             if (tweets.length > 1) {
-                showNextTweet();
+                // If we directly want to advance on hover-out, uncomment this
+                //showNextTweet();
                 $(document).everyTime(twitterDisplayTime, showNextTweet);
             }
         });
