@@ -1,0 +1,17 @@
+Check in, check uit
+
+Copyright 2010, Martijn Vermaat <martijn@vermaat.name>
+
+  http://checkincheckuit.nl
+  http://svn.vermaat.name/checkincheckuit
+
+Licensed under the MIT license, see the LICENSE file
+
+  http://en.wikipedia.org/wiki/Mit_license
+
+Some of the Twitter handling code was adapted from the jQuery
+plugin Tweet!, found at http://tweet.seaofclouds.com/
+
+This code uses:
+  jQuery          http://jquery.com
+  jQuery Timers   http://plugins.jquery.com/project/timers
