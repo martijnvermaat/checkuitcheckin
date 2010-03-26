@@ -24,7 +24,7 @@
 $(document).ready(function() {
 
 
-    var twitterSearch = 'chipkaart';
+    var twitterSearch = 'chipkaart OR ovchipkaart';
     var twitterCount = 20;
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
