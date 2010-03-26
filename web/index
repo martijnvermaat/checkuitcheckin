@@ -5,7 +5,7 @@
   <title>Check uit, check in</title>
   <link rel="stylesheet" href="stylesheets/screen.css">
   <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/jquery.delicious.js"></script>
+  <script src="javascripts/jquery.timers.js"></script>
   <script src="javascripts/ui.js"></script>
 </head>
 <body>
