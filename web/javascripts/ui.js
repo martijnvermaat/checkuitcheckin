@@ -46,7 +46,8 @@ $(document).ready(function() {
     var twitterReloadTime = 1000 * 60 * 5;
 
     var deliciousUser = 'checkuitcheckin';
-    var deliciousCount = 6;
+    var deliciousTag = 'nieuws';
+    var deliciousCount = 10;
 
 
     var twitterUrl = 'http://search.twitter.com/search?&q='
@@ -58,9 +59,11 @@ $(document).ready(function() {
     var tweets = [];
     var currentTweet = 0;
 
-    var deliciousUrl = 'http://delicious.com/' + deliciousUser;
+    var deliciousUrl = 'http://delicious.com/' + deliciousUser
+        + '/' + deliciousTag;
     var deliciousApiUrl = 'http://feeds.delicious.com/v2/json/'
-        + deliciousUser + '?count=' + deliciousCount + '&callback=?';
+        + deliciousUser + '/' + deliciousTag
+        + '?count=' + deliciousCount + '&callback=?';
 
 
     // Load Twitter search results and call callback function
@@ -96,11 +99,14 @@ $(document).ready(function() {
         // http://delicious.com/help/feeds
 
         $.getJSON(deliciousApiUrl, function(data) {
-            var list = $('<ul>').appendTo($('#delicious'));
+            var list = $('<dl>').appendTo($('#delicious'));
             $.each((data.results || data), function(i, item) {
-                list.append($('<li>').append(
+                list.append($('<dt>').text(shortDate(item.dt)));
+                list.append($('<dd>').append(
                     $('<a>').attr('href', item.u).text(item.d)));
             });
+            $('#delicious').append($('<p>').append(
+                $('<a>Meer nieuwsberichten...</a>').attr('href', deliciousUrl)));
         });
 
     }
@@ -158,6 +164,9 @@ $(document).ready(function() {
 
     }
 
+
+    // Show current date
+    $('.now').text(shortDate());
 
     // Show Delicious links
     updateDelicious();
@@ -279,5 +288,23 @@ function relativeTime(time) {
         return pluralize('uur', parseInt(delta / 3600)) + ' geleden';
     else
         return pluralize('dag', parseInt(delta / 86400)) + ' geleden';
+
+}
+
+
+// Create a short description from a date string
+function shortDate(s) {
+
+    var months = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun',
+                  'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+
+    if (!s)
+        return (new Date).getDate() + ' ' + months[(new Date).getMonth() + 1];
+
+    var d = s.match(/^\d{4}-(\d{2})-(\d{2}).*$/);
+    if (d != null)
+        return d[2] + ' ' + months[parseInt(d[1]) - 1];
+
+    return '';
 
 }

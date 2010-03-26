@@ -9,6 +9,8 @@
   <script src="javascripts/ui.js"></script>
 </head>
 <body>
+<p class="now">&nbsp;</p>
+<h1><a href="/">Check uit, check in &mdash; ov-chipkaart peil gechecked</a></h1>
 <div id="content">
 <div class="tweet">
 <h2></h2>
