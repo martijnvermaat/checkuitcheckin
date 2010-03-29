@@ -73,7 +73,7 @@ $(document).ready(function() {
                     date    : relativeTime(tweet.created_at),
                     url     : 'http://twitter.com/' + user
                               + '/statuses/' + tweet.id,
-                    userUrl : 'http://twitter.com/' + user,
+                    userUrl : 'http://twitter.com/' + user
                 });
             });
 
