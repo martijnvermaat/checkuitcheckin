@@ -168,20 +168,26 @@ $(document).ready(function() {
 
             if (tweets.length > 1) {
 
-                $(document).everyTime(twitterDisplayTime, showNextTweet);
+                $(document).everyTime(twitterDisplayTime,
+                                      'next',
+                                      showNextTweet);
 
                 // We add navigation links and reset the skip timer on click
                 $('#content').append($('<ul class="nav">').append(
                     $('<li title="vorige">&lt;</li>').click(function() {
                         showPreviousTweet();
-                        $(document).stopTime();
-                        $(document).everyTime(twitterDisplayTime, showNextTweet);
+                        $(document).stopTime('next');
+                        $(document).everyTime(twitterDisplayTime,
+                                              'next',
+                                              showNextTweet);
                     })
                 ).append(
                     $('<li title="volgende">&gt;</li>').click(function() {
                         showNextTweet();
-                        $(document).stopTime();
-                        $(document).everyTime(twitterDisplayTime, showNextTweet);
+                        $(document).stopTime('next');
+                        $(document).everyTime(twitterDisplayTime,
+                                              'next',
+                                              showNextTweet);
                     })
                 ));
 
@@ -191,7 +197,7 @@ $(document).ready(function() {
 
 
         // Every 5 minutes, get tweets and start at the latest tweet again
-        $(document).everyTime(twitterReloadTime, updateTwitter);
+        $(document).everyTime(twitterReloadTime, 'reload', updateTwitter);
 
         // Show link to Twitter search results
         $('#content').append($('<p class="more">').append(
@@ -199,12 +205,14 @@ $(document).ready(function() {
 
         // Pause auto advancing of tweets on mouse hover
         $('#content .tweet').hover(function() {
-            $(document).stopTime();
+            $(document).stopTime('next');
         }, function() {
             if (tweets.length > 1) {
                 // If we directly want to advance on hover-out, uncomment this
                 //showNextTweet();
-                $(document).everyTime(twitterDisplayTime, showNextTweet);
+                $(document).everyTime(twitterDisplayTime,
+                                      'next',
+                                      showNextTweet);
             }
         });
 

@@ -10,14 +10,14 @@
 </head>
 <body>
 <p class="now">&nbsp;</p>
-<h1><a href="index">Check uit, check in &mdash; ov-chipkaart peil gechecked</a></h1>
+<h1><a href="/">Check uit, check in &mdash; ov-chipkaart peil gechecked</a></h1>
 <div id="content">
-<h2>Check in, check uit</h2>
+<h2>Check uit, check in</h2>
 <p>Hier kan een stukje tekst komen over berichtgeving en naam.</p>
 </div>
 <div id="delicious"></div>
 <ul id="footer">
-  <li><a href="over">over check uit, check in</a></li>
+  <li><a href="/over">over check uit, check in</a></li>
   <li><a href="http://svn.vermaat.name/checkuitcheckin">broncode</a></li>
   <li><a href="http://www.flickr.com/photos/alper/3697137687/">foto door illustir</a></li>
 </ul>

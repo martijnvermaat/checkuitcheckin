@@ -6,4 +6,6 @@ AddType "text/html; charset=utf-8" .html
     ForceType "text/html; charset=utf-8"
 </FilesMatch>
 
+Options -Indexes
+
 DirectoryIndex index
