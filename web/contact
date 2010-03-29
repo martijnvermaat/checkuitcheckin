@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <title>check uit, check in &mdash; ov-chipkaart peil gechecked</title>
+  <title>Check uit, check in &mdash; ov-chipkaart peil gechecked</title>
   <link rel="stylesheet" href="stylesheets/screen.css">
   <script src="javascripts/jquery.js"></script>
   <script src="javascripts/jquery.timers.js"></script>
