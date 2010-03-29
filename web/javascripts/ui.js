@@ -219,11 +219,9 @@ $(document).ready(function() {
     }
 
 
-    // Show current date
-    $('.now').text(shortDate());
-
     // Show Delicious links
     updateDelicious();
+
 
     // If this is the index page, setup the Twitter stream
     if ($('body').hasClass('index'))

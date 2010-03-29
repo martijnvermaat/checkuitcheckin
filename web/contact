@@ -2,18 +2,22 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <title>Check uit, check in &mdash; ov-chipkaart peil gechecked</title>
+  <title>check uit, check in &mdash; ov-chipkaart peil gechecked</title>
   <link rel="stylesheet" href="stylesheets/screen.css">
   <script src="javascripts/jquery.js"></script>
   <script src="javascripts/jquery.timers.js"></script>
   <script src="javascripts/ui.js"></script>
 </head>
-<body class="index">
-<h1><a href="/">check uit, check in &mdash; ov-chipkaart peil gechecked</a></h1>
+<body>
+<h1><a href="/">Check uit, check in &mdash; ov-chipkaart peil gechecked</a></h1>
 <div id="content">
-<div class="tweet">
-<h2></h2>
-<p class="text"></p>
+<div id="pane"
+<h2>Contact</h2>
+<p>
+Nieuwstips, ov-chipkaart frustraties en vragen over deze website zijn
+welkom
+op <a href="mailto:columbus@checkuitcheckin.nl">columbus@checkuitcheckin.nl<a>.
+</p>
 </div>
 </div>
 <div id="delicious"></div>

@@ -18,17 +18,14 @@ a {
 }
 
 
-p.now {
-    float               :   left;
-    width               :   90px;
-    margin              :   0 20px 0 0;
-    text-align          :   right;
-    color               :   #333;
+strong {
+    font-weight         :   normal;
+    font-style          :   italic;
 }
 
 
 h1 {
-    margin              :   8px 0 8px 0;
+    margin              :   8px 0 8px 110px;
     padding             :   0;
     font-size           :   14px;
     font-weight         :   normal;
@@ -46,19 +43,44 @@ h2 {
 }
 
 
+h3 {
+    margin-top          :   32px;
+    font-family         :   Georgia, serif;
+    font-size           :   20px;
+    font-weight         :   normal;
+    line-height         :   32px;
+    letter-spacing      :   1px;
+    text-shadow         :   black 1px 1px 2px;
+}
+
+
 #content {
-    margin-top          :   20px;
-    padding             :   40px 0 40px 110px;
+    margin              :   20px 0 20px 0;
     background          :   #171917;
+}
+
+
+#pane {
+    padding             :   40px 0 40px 110px;
+    width               :   790px;
+}
+
+
+#content a {
+    text-decoration     :   underline;
 }
 
 
 .index #content {
     position            :   relative;
     height              :   544px;
-    padding             :   0;
     /* By illustir, http://www.flickr.com/photos/alper/3697137687/ */
     background          :  #171917 url("../images/background.jpg") left center no-repeat;
+}
+
+
+.index #content a {
+    text-decoration     :   none;
 }
 
 
@@ -117,7 +139,7 @@ h2 {
 
 #content p.more {
     position            :   absolute;
-    top                 :   321px;
+    top                 :   322px;
     left                :   260px;
     font-family         :   Georgia, serif;
     font-size           :   24px;
@@ -142,7 +164,7 @@ h2 {
 
 
 #delicious {
-    margin              :   20px 0 50px 0;
+    margin              :   0 0 50px 0;
 }
 
 
