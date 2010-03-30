@@ -25,6 +25,11 @@ $(document).ready(function() {
 
 
     var twitterSearch = 'chipkaart OR ovchipkaart';
+    var twitterBlacklist = ['Regio_Alphen',
+                            'Regio_Leiden',
+                            'LeidenNL',
+                            'Regio_Duin_Bol',
+                            'wageningen'];
     var twitterCount = 20;
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
@@ -39,10 +44,14 @@ $(document).ready(function() {
     var deliciousCount = 10;
 
 
+    var twitterQuery = twitterSearch + ' '
+        + $.map(twitterBlacklist, function(u) {
+            return ' -from:' + u;
+        }).join(' ');
     var twitterUrl = 'http://search.twitter.com/search?&q='
-        + encodeURIComponent(twitterSearch);
+        + encodeURIComponent(twitterQuery);
     var twitterApiUrl = 'http://search.twitter.com/search.json?&q='
-        + encodeURIComponent(twitterSearch)
+        + encodeURIComponent(twitterQuery)
         + '&rpp=' + twitterCount + '&callback=?';
     var initialTweet = true;
     var tweets = [];
