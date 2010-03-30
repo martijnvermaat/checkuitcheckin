@@ -25,11 +25,11 @@ $(document).ready(function() {
 
 
     var twitterSearch = 'chipkaart OR ovchipkaart';
+    // See the comment for twitterQuery.length
     var twitterBlacklist = ['Regio_Alphen',
                             'Regio_Leiden',
                             'LeidenNL',
                             'Regio_Duin_Bol',
-                            'wageningen',
                             'totaalnieuwsweb'];
     var twitterCount = 20;
     var twitterDisplayTime = 1000 * 8;
@@ -45,6 +45,7 @@ $(document).ready(function() {
     var deliciousCount = 10;
 
 
+    // Unfortunately, twitterQuery.length cannot exceed 140
     var twitterQuery = twitterSearch + ' '
         + $.map(twitterBlacklist, function(u) {
             return ' -from:' + u;
