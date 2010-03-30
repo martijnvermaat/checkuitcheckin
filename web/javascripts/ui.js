@@ -29,7 +29,8 @@ $(document).ready(function() {
                             'Regio_Leiden',
                             'LeidenNL',
                             'Regio_Duin_Bol',
-                            'wageningen'];
+                            'wageningen',
+                            'totaalnieuwsweb'];
     var twitterCount = 20;
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
