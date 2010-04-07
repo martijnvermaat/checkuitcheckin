@@ -24,14 +24,14 @@
 $(document).ready(function() {
 
 
-    var twitterSearch = 'chipkaart OR ovchipkaart';
-    // See the comment for twitterQuery.length
+    var twitterSearch = 'ovchipkaart OR chipkaart OR ovchip';
+    var twitterCount = 50;
     var twitterBlacklist = ['Regio_Alphen',
                             'Regio_Leiden',
                             'LeidenNL',
                             'Regio_Duin_Bol',
-                            'totaalnieuwsweb'];
-    var twitterCount = 20;
+                            'totaalnieuwsweb',
+                            'ov_chipkaart'];
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
     /*
@@ -45,15 +45,11 @@ $(document).ready(function() {
     var deliciousCount = 10;
 
 
-    // Unfortunately, twitterQuery.length cannot exceed 140
-    var twitterQuery = twitterSearch + ' '
-        + $.map(twitterBlacklist, function(u) {
-            return ' -from:' + u;
-        }).join(' ');
+    // Unfortunately, twitter query cannot exceed 140 characters
     var twitterUrl = 'http://search.twitter.com/search?&q='
-        + encodeURIComponent(twitterQuery);
+        + encodeURIComponent(twitterSearch);
     var twitterApiUrl = 'http://search.twitter.com/search.json?&q='
-        + encodeURIComponent(twitterQuery)
+        + encodeURIComponent(twitterSearch)
         + '&rpp=' + twitterCount + '&callback=?';
     var initialTweet = true;
     var tweets = [];
@@ -78,17 +74,19 @@ $(document).ready(function() {
 
             $.each((data.results || data), function(i, tweet) {
                 var user = tweet.from_user || tweet.user.screen_name;
-                tweets.push({
-                    text    : twittify(tweet.text),
-                    user    : user,
-                    date    : relativeTime(tweet.created_at),
-                    url     : 'http://twitter.com/' + user
-                              + '/statuses/' + tweet.id,
-                    userUrl : 'http://twitter.com/' + user
-                });
+                if (twitterBlacklist.indexOf(user) == -1) {
+                    tweets.push({
+                        text    : twittify(tweet.text),
+                        user    : user,
+                        date    : relativeTime(tweet.created_at),
+                        url     : 'http://twitter.com/' + user
+                                  + '/statuses/' + tweet.id,
+                        userUrl : 'http://twitter.com/' + user
+                    });
+                }
             });
 
-            if (callback) callback();
+            if ($.isFunction(callback)) callback();
 
         });
 
