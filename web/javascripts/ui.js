@@ -30,7 +30,12 @@ $(document).ready(function() {
                             'Regio_Leiden',
                             'LeidenNL',
                             'Regio_Duin_Bol',
+                            'Edestad',
+                            'nieuwsede',
+                            'edenieuwspunt.nl',
                             'totaalnieuwsweb',
+                            'De_Pers',
+                            '123nieuws',
                             'ov_chipkaart'];
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
