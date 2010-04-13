@@ -33,9 +33,16 @@ $(document).ready(function() {
                             'Edestad',
                             'nieuwsede',
                             'edenieuwspunt.nl',
+                            'nieuwsinutrecht',
+                            'UtrechtNL',
+                            'rtvutrecht',
+                            'regio_nieuws',
+                            'Nieuwsbekijken',
                             'totaalnieuwsweb',
                             'De_Pers',
                             '123nieuws',
+                            'doormijverloren',
+                            'doormijgevonden',
                             'ov_chipkaart'];
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
