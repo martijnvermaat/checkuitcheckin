@@ -1,11 +1,11 @@
 /***********************************************************************
 
-    Check in, check uit
+    Check uit, check in
 
     Copyright 2010, Martijn Vermaat <martijn@vermaat.name>
 
-      http://checkincheckuit.nl
-      http://svn.vermaat.name/checkincheckuit
+      http://checkuitcheckin.nl
+      http://svn.vermaat.name/checkuitcheckin
 
     Licensed under the MIT license, see the LICENSE file
 
