@@ -91,7 +91,7 @@ $(document).ready(function() {
 
             $.each((data.results || data), function(i, tweet) {
                 var user = tweet.from_user || tweet.user.screen_name;
-                if (twitterBlacklist.indexOf(user) == -1) {
+                if ($.inArray(user, twitterBlacklist) == -1) {
                     tweets.push({
                         text    : twittify(tweet.text),
                         user    : user,
