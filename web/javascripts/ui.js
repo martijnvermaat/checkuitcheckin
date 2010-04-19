@@ -43,6 +43,9 @@ $(document).ready(function() {
                             'totaalnieuwsweb',
                             'De_Pers',
                             '123nieuws',
+                            'nieuwsnld',
+                            'economie_nieuws',
+                            'treinreizigernl',
                             'doormijverloren',
                             'doormijgevonden',
                             'ov_chipkaart'];
