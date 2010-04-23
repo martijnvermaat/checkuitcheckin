@@ -27,58 +27,13 @@ $(document).ready(function() {
     var twitterSearch = 'ovchipkaart OR chipkaart OR ovchip';
     var twitterCount = 50;
     /*
-      Instead of blacklisting, it seems we can just as wel filter every
-      tweet containing a url. We would probably be left with only honest
-      personal tweets about the card (but we would mis out on some as well).
+      We filter out any tweet containing a link. The idea is that we are
+      probably left with only honest personal tweets about the card (but we
+      mis out on some as well).
+      This effectively filters a lot of spam and news feeds. Currently, about
+      half of the search results are filtered this way.
     */
-    var twitterBlacklist = ['Regio_Alphen',
-                            'Regio_Leiden',
-                            'LeidenNL',
-                            'Regio_Duin_Bol',
-                            'Edestad',
-                            'nieuwsede',
-                            'edenieuwspunt.nl',
-                            'omroepgld',
-                            'nieuwsinutrecht',
-                            'UtrechtNL',
-                            'rtvutrecht',
-                            'echo_utrecht',
-                            'rijnmond',
-                            'bussum',
-                            'SaxNu',
-                            'regio_nieuws',
-                            'hetlokalenieuws',
-                            'Nieuwsbekijken',
-                            'hetnieuwstk',
-                            'totaalnieuwsweb',
-                            'digireporter_nl',
-                            'feedjunknl',
-                            'Nieuws_',
-                            'Nieuwsmeldingen',
-                            'noujij',
-                            'nouwij',
-                            'De_Pers',
-                            'binnenland',
-                            'telegraaf',
-                            'NedDagbl',
-                            'Twit_krant',
-                            '123nieuws',
-                            'nieuwsnld',
-                            'studentennl',
-                            'economie_nieuws',
-                            'ictnieuws',
-                            'bvnieuws',
-                            'PolitiekNext',
-                            'politiekretweet',
-                            'treinreizigernl',
-                            'ovnieuws',
-                            'reistweets',
-                            'vermistverloren',
-                            'doormijverloren',
-                            'doormijgevonden',
-                            'Nederland_Stemt',
-                            'DonaldDuckvideo',
-                            'ov_chipkaart'];
+    var twitterFilter = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/i;
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
     /*
@@ -121,7 +76,7 @@ $(document).ready(function() {
 
             $.each((data.results || data), function(i, tweet) {
                 var user = tweet.from_user || tweet.user.screen_name;
-                if ($.inArray(user, twitterBlacklist) == -1) {
+                if (!twitterFilter.test(tweet.text)) {
                     tweets.push({
                         text    : twittify(tweet.text),
                         user    : user,
@@ -287,14 +242,8 @@ $(document).ready(function() {
 });
 
 
-// Create links for urls, users, and hashtags
+// Create links for users, and hashtags (tweets with links are filtered)
 function twittify(tweet) {
-
-    var linkUrl = function(s) {
-        var returning = [];
-        var regexp = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi;
-        return s.replace(regexp,"<a href=\"$1\">$1</a>");
-    }
 
     var linkUser = function(s) {
         var returning = [];
@@ -308,7 +257,7 @@ function twittify(tweet) {
         return s.replace(regexp, ' <a href="http://search.twitter.com/search?q=&tag=$1&lang=all">#$1</a>');
     }
 
-    return linkHash(linkUser(linkUrl(tweet)));
+    return linkHash(linkUser(tweet));
 
 }
 
