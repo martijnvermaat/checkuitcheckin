@@ -26,6 +26,11 @@ $(document).ready(function() {
 
     var twitterSearch = 'ovchipkaart OR chipkaart OR ovchip';
     var twitterCount = 50;
+    /*
+      Instead of blacklisting, it seems we can just as wel filter every
+      tweet containing a url. We would probably be left with only honest
+      personal tweets about the card (but we would mis out on some as well).
+    */
     var twitterBlacklist = ['Regio_Alphen',
                             'Regio_Leiden',
                             'LeidenNL',
@@ -39,6 +44,7 @@ $(document).ready(function() {
                             'rtvutrecht',
                             'echo_utrecht',
                             'rijnmond',
+                            'bussum',
                             'SaxNu',
                             'regio_nieuws',
                             'hetlokalenieuws',
@@ -46,8 +52,11 @@ $(document).ready(function() {
                             'hetnieuwstk',
                             'totaalnieuwsweb',
                             'digireporter_nl',
+                            'feedjunknl',
                             'Nieuws_',
                             'Nieuwsmeldingen',
+                            'noujij',
+                            'nouwij',
                             'De_Pers',
                             'binnenland',
                             'telegraaf',
@@ -57,11 +66,14 @@ $(document).ready(function() {
                             'nieuwsnld',
                             'studentennl',
                             'economie_nieuws',
+                            'ictnieuws',
+                            'bvnieuws',
                             'PolitiekNext',
                             'politiekretweet',
                             'treinreizigernl',
                             'ovnieuws',
                             'reistweets',
+                            'vermistverloren',
                             'doormijverloren',
                             'doormijgevonden',
                             'Nederland_Stemt',
