@@ -34,6 +34,10 @@ $(document).ready(function() {
       half of the search results are filtered this way.
     */
     var twitterFilter = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/i;
+    // And then there are some really persistent feeds we don't want to show
+    var twitterBlacklist = ['ov_chipkaart',      // only retweets
+                            'politiekretweet',   // only retweets
+                            'DonaldDuckvideo'];  // spam
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
     /*
@@ -76,7 +80,8 @@ $(document).ready(function() {
 
             $.each((data.results || data), function(i, tweet) {
                 var user = tweet.from_user || tweet.user.screen_name;
-                if (!twitterFilter.test(tweet.text)) {
+                if ($.inArray(user, twitterBlacklist) == -1
+                    && !twitterFilter.test(tweet.text)) {
                     tweets.push({
                         text    : twittify(tweet.text),
                         user    : user,
