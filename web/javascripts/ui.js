@@ -37,6 +37,7 @@ $(document).ready(function() {
     // And then there are some really persistent feeds we don't want to show
     var twitterBlacklist = ['ov_chipkaart',      // only retweets
                             'politiekretweet',   // only retweets
+                            'Uitgekotst',        // not interesting
                             'DonaldDuckvideo'];  // spam
     var twitterDisplayTime = 1000 * 8;
     var twitterFadeTime = 800;
